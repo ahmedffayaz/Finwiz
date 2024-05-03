@@ -1,0 +1,2815 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Finwiz",
+        "description": "Finwiz API documentation",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/user/user-assets/{accountId}": {
+            "get": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Get user's Assets",
+                "operationId": "68742f35d30742cbee1c4ef57b3008c4",
+                "parameters": [
+                    {
+                        "name": "accountId",
+                        "in": "path",
+                        "description": "ID of the user user'Account to retrieve assets",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/user-assets/{id}/{account_id}": {
+            "get": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Get a user's Specific asset By ID",
+                "operationId": "2cc801a78eb9ed48f56aebc1750405be",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user Asset to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "Account Id of the user Asset to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/user-assets": {
+            "post": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Create a user assets",
+                "operationId": "7aa5110813f02c42c91f311aa59189a2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "account_id": {
+                                        "type": "integer",
+                                        "example": "12"
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "decimal",
+                                        "example": "20"
+                                    },
+                                    "label": {
+                                        "type": "varchar",
+                                        "example": "Account Holder"
+                                    },
+                                    "avatar": {
+                                        "description": "Image file to upload",
+                                        "type": "file",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/user-assets/{id}": {
+            "post": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Update a user's assets by ID",
+                "operationId": "4c7bdd4452372d5c671dad24f2eac73f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user Asset to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "decimal",
+                                        "example": "20"
+                                    },
+                                    "label": {
+                                        "type": "varchar",
+                                        "example": "Account Holder"
+                                    },
+                                    "avatar": {
+                                        "description": "Image file to upload",
+                                        "type": "file",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Delete a user Assets by ID",
+                "operationId": "cb27f072fd62ebf52bde4a5b4d0de79b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user's Assets to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "ID of the user user'Account to retrieve assets",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/categories/{per_page}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get all categories",
+                "operationId": "19efdfd902a7d133add9cc20c286def8",
+                "parameters": [
+                    {
+                        "name": "per_page",
+                        "in": "path",
+                        "description": "Number of items per page",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 25
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/api/user/main-categories/{per_page}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get all main categories",
+                "operationId": "c6048e42dd820dacec033ffb02e79619",
+                "parameters": [
+                    {
+                        "name": "per_page",
+                        "in": "path",
+                        "description": "Number of items per page",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 25
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/api/user/sub-categories/{parent_id}/{per_page}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get sub-categories by parent ID",
+                "operationId": "17eed4e71c074ab425f5f55429022506",
+                "parameters": [
+                    {
+                        "name": "parent_id",
+                        "in": "path",
+                        "description": "ID of the parent category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "path",
+                        "description": "Number of items per page",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 25
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/api/user/future-goal": {
+            "get": {
+                "tags": [
+                    "Future Goal"
+                ],
+                "summary": "Get user's Future Goal with Categories",
+                "operationId": "c0a513659b243c17353036da98fc2475",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Future Goal"
+                ],
+                "summary": "Create a future goal",
+                "operationId": "045db8deaeaa0b9157a78a9e40b04583",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "purchase_name": {
+                                        "type": "string",
+                                        "example": "Name"
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "decimal",
+                                        "example": "111.5"
+                                    },
+                                    "priority": {
+                                        "type": "string",
+                                        "example": "High"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-09-16"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/future-goal/{id}": {
+            "get": {
+                "tags": [
+                    "Future Goal"
+                ],
+                "summary": "Get a user's Specific Future Goal By ID",
+                "operationId": "8d038676eb12e708ff61294ec5864792",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user future goal to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Future Goal"
+                ],
+                "summary": "Update a user's Future Goal by ID",
+                "operationId": "faec6dd82d371b9df87752e017b07865",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user future goal to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": "11"
+                                    },
+                                    "purchase_name": {
+                                        "type": "string",
+                                        "example": "abc"
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "decimal",
+                                        "example": "10.5"
+                                    },
+                                    "priority": {
+                                        "type": "string",
+                                        "example": "High"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-09-15"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Future Goal"
+                ],
+                "summary": "Delete a user Future Goal by ID",
+                "operationId": "b5ec0378393e49c364696de899065017",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user Future Goal to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/show-auth-credentials": {
+            "get": {
+                "tags": [
+                    "Investment Holding"
+                ],
+                "summary": "Get user's Auth credentials",
+                "operationId": "afea1a7b90cf0470e78ee62f6de284ba",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/show-investment-holding/{accountId}": {
+            "get": {
+                "tags": [
+                    "Investment Holding"
+                ],
+                "summary": "Get a user's Investment Holding Records",
+                "operationId": "dde16c749110f10c8e3c8286644b1a4d",
+                "parameters": [
+                    {
+                        "name": "accountId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/notifications": {
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "Get user notifications",
+                "operationId": "1bcf48368acee0d64c3ab0b731bc6211",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/read-notifications": {
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "Get user read notifications",
+                "operationId": "c30a95331a15aac7b822acdf5ea50f99",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/unseen-notifications": {
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "Get user unread notifications",
+                "operationId": "b76ec8a329092606403615af79a272d3",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/mark-read-all-notifications": {
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "Mark all unread notifications as read",
+                "operationId": "081d54b90fc4a84b19d4dbc4e48e34e9",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/generate-user-suggestion": {
+            "post": {
+                "tags": [
+                    "OpenAPI"
+                ],
+                "summary": "Generate a suggestion for a user using OpenAPI",
+                "operationId": "ef4561212a8061dc1fef7d6df96e7c98",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "message": {
+                                        "type": "string",
+                                        "example": "My monthly income totals $3500. I am aiming to save at least 35 percent of this amount, with the remainder allocated for monthly expenses. In the previous month, my bills amounted to $500, while expenses for fuel and travel reached $1000. I allocated $400 for food expenses, and an additional $500 was dedicated to loan payments, leaving me with five more months to complete the loan payments. Shopping expenses accounted for $500. I also need to cover ongoing bills and daily necessities. Could you provide guidance on how I should distribute my monthly spending to reach my savings goal?"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-get-access-token": {
+            "post": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Get Access Token",
+                "operationId": "7ef19df61a809508cfa5cb8e880bad48",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "public_token": {
+                                        "type": "string",
+                                        "example": "public-****************"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "Get plaid auth api details"
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-auth": {
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Get Plaid auth",
+                "operationId": "5f30479faafd0629df9e654de5fd9c25",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "path",
+                        "description": "Number of transactions to retrieve",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 5
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Get plaid auth api details"
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-balance": {
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Get Plaid balance",
+                "operationId": "f535035dbfdd7fddeba1cf19717a1188",
+                "responses": {
+                    "default": {
+                        "description": "Get plaid balance api details"
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-identity": {
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Get Plaid identity",
+                "operationId": "a88baa6a9636c3f1c242f4202f25cc9c",
+                "responses": {
+                    "default": {
+                        "description": "Get plaid identity api details"
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-investment-holding": {
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Get Plaid investment holding",
+                "operationId": "f495d20f839e2394078e1510e486ceac",
+                "responses": {
+                    "default": {
+                        "description": "Get plaid investment holding api details"
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-investment-transaction/{start_date}/{end_date}": {
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Get Plaid investment transaction",
+                "operationId": "a7dedeb84a1479d687d6ff7f8e8d6a7c",
+                "parameters": [
+                    {
+                        "name": "start_date",
+                        "in": "path",
+                        "description": "Start date in the format of YYYY-MM-DD",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "default": "2019-01-01"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "path",
+                        "description": "End date in the format of YYYY-MM-DD",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "default": "2021-01-01"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Get Plaid investment transaction API details"
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-liabilities": {
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Get Plaid liabilities",
+                "operationId": "42503ffaace97a2249c3c3fe615fb575",
+                "responses": {
+                    "default": {
+                        "description": "Get plaid liabilities api details"
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-enrich": {
+            "post": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Enrich Plaid transactions",
+                "operationId": "fb23f3fce18017e973b08cad11754b57",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "account_type": {
+                                        "type": "string",
+                                        "example": "credit"
+                                    },
+                                    "transactions": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "6135818adda16500147e7c1d"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "PURCHASE WM SUPERCENTER #1700"
+                                                },
+                                                "amount": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 72.1
+                                                },
+                                                "direction": {
+                                                    "type": "string",
+                                                    "example": "OUTFLOW"
+                                                },
+                                                "iso_currency_code": {
+                                                    "type": "string",
+                                                    "example": "USD"
+                                                },
+                                                "location": {
+                                                    "properties": {
+                                                        "city": {
+                                                            "type": "string",
+                                                            "example": "Poway"
+                                                        },
+                                                        "region": {
+                                                            "type": "string",
+                                                            "example": "CA"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "mcc": {
+                                                    "type": "string",
+                                                    "example": "5310"
+                                                },
+                                                "date_posted": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2022-07-05"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Enriched Plaid transactions response"
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-generate-link-token": {
+            "post": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Generate Plaid Link token",
+                "operationId": "d973c1bf29467ff59ac17f41cc2130c0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "client_name": {
+                                        "type": "string",
+                                        "example": "Muhammad Izhan"
+                                    },
+                                    "country_codes": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": "US"
+                                        }
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "example": "en"
+                                    },
+                                    "user": {
+                                        "properties": {
+                                            "client_user_id": {
+                                                "type": "string",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "products": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": [
+                                                "auth",
+                                                "transactions",
+                                                "identity",
+                                                "investments"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Generated Plaid Link token"
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-user-generate-token": {
+            "post": {
+                "tags": [
+                    "Plaid Income"
+                ],
+                "summary": "Create Plaid user",
+                "operationId": "0d33abede0774438c3fb3670cefe7152",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "client_user_id": {
+                                        "type": "string",
+                                        "example": "5"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plaid user created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-generate-public-token-for-payroll-income": {
+            "post": {
+                "tags": [
+                    "Plaid Income"
+                ],
+                "summary": "Create Plaid sandbox public token for sandbox only",
+                "operationId": "8d11a1fb416145b81551d3f64019a7d7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_token": {
+                                        "type": "string",
+                                        "example": "user-sandbox-d7e4ec88-dac7-4f37-92d6-81402c1a53cd"
+                                    },
+                                    "institution_id": {
+                                        "type": "string",
+                                        "example": "ins_90"
+                                    },
+                                    "initial_products": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": "income_verification"
+                                        }
+                                    },
+                                    "options": {
+                                        "properties": {
+                                            "webhook": {
+                                                "type": "string",
+                                                "example": "https://www.genericwebhookurl.com/webhook"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plaid sandbox public token created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-generate-payroll-income-link-token": {
+            "post": {
+                "tags": [
+                    "Plaid Income"
+                ],
+                "summary": "Generate Plaid Link token",
+                "operationId": "7ae37c282cfb85c304a3e68d1ce0f9d2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_token": {
+                                        "type": "string",
+                                        "example": "user-sandbox-d7e4ec88-dac7-4f37-92d6-81402c1a53cd"
+                                    },
+                                    "client_name": {
+                                        "type": "string",
+                                        "example": "Insert Client name here"
+                                    },
+                                    "country_codes": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": "US"
+                                        }
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "example": "en"
+                                    },
+                                    "user": {
+                                        "properties": {
+                                            "client_user_id": {
+                                                "type": "string",
+                                                "example": "unique_user_id"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "products": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": "income_verification"
+                                        }
+                                    },
+                                    "income_verification": {
+                                        "properties": {
+                                            "income_source_types": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string",
+                                                    "example": "payroll"
+                                                }
+                                            },
+                                            "payroll_income": {
+                                                "properties": {
+                                                    "flow_types": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "digital"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Generated Plaid Link token"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-credit-payroll-income": {
+            "post": {
+                "tags": [
+                    "Plaid Income"
+                ],
+                "summary": "Get Plaid credit payroll income",
+                "operationId": "7851106db0d12d761a92e30a63534f01",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_token": {
+                                        "type": "string",
+                                        "example": "user-sandbox-d7e4ec88-dac7-4f37-92d6-81402c1a53cd"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plaid credit payroll income retrieved successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-generate-public-token-for-bank-income": {
+            "post": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Create Plaid sandbox public token",
+                "operationId": "652a5def0617908335b0469cba1996e7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_token": {
+                                        "type": "string",
+                                        "example": "user-sandbox-d7e4ec88-dac7-4f37-92d6-81402c1a53cd"
+                                    },
+                                    "institution_id": {
+                                        "type": "string",
+                                        "example": "ins_20"
+                                    },
+                                    "initial_products": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": "income_verification"
+                                        }
+                                    },
+                                    "options": {
+                                        "properties": {
+                                            "webhook": {
+                                                "type": "string",
+                                                "example": "https://www.genericwebhookurl.com/webhook"
+                                            },
+                                            "override_username": {
+                                                "type": "string",
+                                                "example": "user_bank_income"
+                                            },
+                                            "override_password": {
+                                                "type": "string",
+                                                "example": "{}"
+                                            },
+                                            "income_verification": {
+                                                "properties": {
+                                                    "income_source_types": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "bank"
+                                                        }
+                                                    },
+                                                    "bank_income": {
+                                                        "properties": {
+                                                            "days_requested": {
+                                                                "type": "integer",
+                                                                "example": 180
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plaid sandbox public token created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-generate-bank-income-link-token": {
+            "post": {
+                "tags": [
+                    "Plaid Income"
+                ],
+                "summary": "Create Plaid link token for bank income",
+                "operationId": "0570be04f2f3f9aea1c0835bf325529b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_token": {
+                                        "type": "string",
+                                        "example": "user-sandbox-d7e4ec88-dac7-4f37-92d6-81402c1a53cd"
+                                    },
+                                    "client_name": {
+                                        "type": "string",
+                                        "example": "Insert Client name here"
+                                    },
+                                    "country_codes": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": "US"
+                                        }
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "example": "en"
+                                    },
+                                    "user": {
+                                        "properties": {
+                                            "client_user_id": {
+                                                "type": "string",
+                                                "example": "5"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "products": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": "income_verification"
+                                        }
+                                    },
+                                    "income_verification": {
+                                        "properties": {
+                                            "income_source_types": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string",
+                                                    "example": "bank"
+                                                }
+                                            },
+                                            "bank_income": {
+                                                "properties": {
+                                                    "days_requested": {
+                                                        "type": "integer",
+                                                        "example": 365
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plaid link token created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-credit-bank-income": {
+            "post": {
+                "tags": [
+                    "Plaid Income"
+                ],
+                "summary": "Get Plaid credit bank income",
+                "operationId": "146a775ad6c96439a54814b859aa414a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_token": {
+                                        "type": "string",
+                                        "example": "user-sandbox-d7e4ec88-dac7-4f37-92d6-81402c1a53cd"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plaid credit bank income retrieved successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-asset-report-create": {
+            "post": {
+                "tags": [
+                    "Plaid Asset Report"
+                ],
+                "summary": "Create Plaid asset report",
+                "operationId": "75659face1fff0fa621ac43f9f638da3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "days_requested": {
+                                        "type": "integer",
+                                        "example": 30
+                                    },
+                                    "options": {
+                                        "properties": {
+                                            "client_report_id": {
+                                                "type": "string",
+                                                "example": "ENTER_CLIENT_REPORT_ID_HERE"
+                                            },
+                                            "webhook": {
+                                                "type": "string",
+                                                "example": "https://www.example.com/webhook"
+                                            },
+                                            "user": {
+                                                "properties": {
+                                                    "client_user_id": {
+                                                        "type": "string",
+                                                        "example": "ENTER_USER_ID_HERE"
+                                                    },
+                                                    "first_name": {
+                                                        "type": "string",
+                                                        "example": "ENTER_FIRST_NAME_HERE"
+                                                    },
+                                                    "middle_name": {
+                                                        "type": "string",
+                                                        "example": "ENTER_MIDDLE_NAME_HERE"
+                                                    },
+                                                    "last_name": {
+                                                        "type": "string",
+                                                        "example": "ENTER_LAST_NAME_HERE"
+                                                    },
+                                                    "ssn": {
+                                                        "type": "string",
+                                                        "example": "111-22-1234"
+                                                    },
+                                                    "phone_number": {
+                                                        "type": "string",
+                                                        "example": "1-415-867-5309"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "ENTER_EMAIL_HERE"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plaid asset report created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-asset-report-get": {
+            "post": {
+                "tags": [
+                    "Plaid Asset Report"
+                ],
+                "summary": "Get Plaid asset report",
+                "operationId": "95839d066afc5bf7714bec15b3d717a1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "asset_report_token": {
+                                        "type": "string",
+                                        "example": "assets-sandbox-8343df3a-a3e0-4d40-99aa-8c23e45161c3"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plaid asset report retrieved successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/plaid-asset-report-pdf-get": {
+            "post": {
+                "tags": [
+                    "Plaid Asset Report"
+                ],
+                "summary": "Get Plaid asset report PDF",
+                "operationId": "94e12e127d43b81f121af1348fa6a69e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "asset_report_token": {
+                                        "type": "string",
+                                        "example": "assets-sandbox-8343df3a-a3e0-4d40-99aa-8c23e45161c3"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plaid asset report PDF retrieved successfully"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error message"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/questions": {
+            "get": {
+                "tags": [
+                    "Question CRUD"
+                ],
+                "summary": "Get All questions",
+                "operationId": "21661f98cc060377f63231be6dec4fc5",
+                "responses": {
+                    "default": {
+                        "description": "Get All questions"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/questions/{question_id}": {
+            "get": {
+                "tags": [
+                    "Question CRUD"
+                ],
+                "summary": "Get Question",
+                "operationId": "140eef689922ccd51cbe293c1b3022ba",
+                "parameters": [
+                    {
+                        "name": "question_id",
+                        "in": "path",
+                        "description": "Question Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer",
+                            "default": "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Get Question"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/user-transaction": {
+            "get": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Get user transactions",
+                "operationId": "3b5fb5d74dbc3dc795b9bb376ecac0f6",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Create a new user transaction",
+                "operationId": "a34b5e754dfe95608c57e8c00d1b5435",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 50
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "account_id": {
+                                        "type": "string",
+                                        "example": "34K4RjGmxztKlaBg8JzRiMgV8x4ZgEsZwR7Xy"
+                                    },
+                                    "datetime": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2023-09-15 14:30:00"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-09-15"
+                                    },
+                                    "merchant_name": {
+                                        "type": "string",
+                                        "example": "Merchant Name"
+                                    },
+                                    "transaction_type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "Income",
+                                            "Expense"
+                                        ],
+                                        "example": "Income"
+                                    },
+                                    "location": {
+                                        "type": "string",
+                                        "example": "Transaction Location"
+                                    },
+                                    "receipt": {
+                                        "description": "Image file to upload",
+                                        "type": "file",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/user-transaction/{id}": {
+            "get": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Get a user transaction by ID",
+                "operationId": "fdfe769ce8ae0a94c539cad5eadcc2cf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user transaction to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Update a user transaction by ID",
+                "operationId": "f8a88d0e203b0455099aa52e039721cb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user transaction to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": "50.00"
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "datetime": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2023-09-15 14:30:00"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-09-15"
+                                    },
+                                    "merchant_name": {
+                                        "type": "string",
+                                        "example": "Merchant Name"
+                                    },
+                                    "transaction_type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "Income",
+                                            "Expense"
+                                        ],
+                                        "example": "Expense"
+                                    },
+                                    "location": {
+                                        "type": "string",
+                                        "example": "Transaction Location"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Delete a user transaction by ID",
+                "operationId": "7f22d65ea981af9ba4c0d9d86f0fa774",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user transaction to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/transaction-receipt/{id}/upload": {
+            "post": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Upload a user's Transaction Receipt",
+                "operationId": "d905ad84e4e14fec896a29befc73de79",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user transaction to generate slip",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "account_id": {
+                                        "type": "integer",
+                                        "example": "22"
+                                    },
+                                    "receipt": {
+                                        "description": "Image file to upload",
+                                        "type": "file",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/transaction-records-filter": {
+            "post": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Get transactions based on filter",
+                "operationId": "d03cd5a46e295c3686c693577c30864a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "account_id": {
+                                        "description": "User account id",
+                                        "type": "string",
+                                        "example": "34K4RjGmxztKlaBg8JzRiMgV8x4ZgEsZwR7Xy"
+                                    },
+                                    "filter": {
+                                        "description": "Filter for querying transactions (date, month, year, custom_date, today)",
+                                        "type": "string",
+                                        "example": "date"
+                                    },
+                                    "date": {
+                                        "description": "Date (YYYY-MM-DD)",
+                                        "type": "string",
+                                        "example": "2023-09-15"
+                                    },
+                                    "month": {
+                                        "description": "Month (1-12)",
+                                        "type": "integer",
+                                        "example": 9
+                                    },
+                                    "year": {
+                                        "description": "Year (YYYY)",
+                                        "type": "integer",
+                                        "example": 2023
+                                    },
+                                    "startDate": {
+                                        "description": "Start date for custom range (YYYY-MM-DD)",
+                                        "type": "string",
+                                        "example": "2023-09-01"
+                                    },
+                                    "endDate": {
+                                        "description": "End date for custom range (YYYY-MM-DD)",
+                                        "type": "string",
+                                        "example": "2023-09-15"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/transaction-count/{category_id}": {
+            "get": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Get a transaction count of subcategory",
+                "operationId": "3c4967ac694c743bacaa47ee8f46feef",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/transaction-count-with-detail/{category_id}": {
+            "get": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Get a transaction count according subcategory and also transaction details",
+                "operationId": "4d7e68b4ed3685f73375e61e77bcc603",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "ID of the category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/transaction-insights": {
+            "get": {
+                "tags": [
+                    "User Transactions"
+                ],
+                "summary": "Get user transactions",
+                "operationId": "aa24729cb516c6d505f3b89b4dbe9c1b",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/generate-insight": {
+            "get": {
+                "tags": [
+                    "User Transactions Insights"
+                ],
+                "summary": "Generate user transactions insights",
+                "operationId": "05e1031afe05788959204abf053fc727",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/insights": {
+            "get": {
+                "tags": [
+                    "User Transactions Insights"
+                ],
+                "summary": "Get user last 6 months transactions insights",
+                "operationId": "c290cb4e1471a2e78a6f8a7fc82d053e",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/main-categories-with-user-category-id": {
+            "get": {
+                "tags": [
+                    "User Categories"
+                ],
+                "summary": "Get all main categories",
+                "operationId": "de060081085e1152b7cfff797cf7c0d7",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/api/user/user-all-categories": {
+            "get": {
+                "tags": [
+                    "User Categories"
+                ],
+                "summary": "Get user's categories with pivots",
+                "operationId": "070b2a606d0e85dc11b361ce27d365fe",
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/user-categories/{id}": {
+            "get": {
+                "tags": [
+                    "User Categories"
+                ],
+                "summary": "Get a user category with pivots by ID",
+                "operationId": "7fa8d01eae25a20d6cf3864585e9f8ea",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user category to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "User Categories"
+                ],
+                "summary": "Update a user category by ID",
+                "operationId": "7ad23ca9f3004111493970d34312eb56",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user category to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "category_name": {
+                                        "type": "string",
+                                        "maxLength": 150,
+                                        "example": "Updated Category Name"
+                                    },
+                                    "limitation": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 15.75
+                                    },
+                                    "fixed": {
+                                        "type": "boolean",
+                                        "format": "number",
+                                        "example": 0
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/merge-user-categories": {
+            "post": {
+                "tags": [
+                    "User Categories"
+                ],
+                "summary": "Merge user category ",
+                "operationId": "ffed28078cfa707951fbc33859b4c42d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "category_name": {
+                                        "type": "string",
+                                        "maxLength": 150,
+                                        "example": "Category Name"
+                                    },
+                                    "limitation": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 10.5
+                                    },
+                                    "user_category_id": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        },
+                                        "example": "[1, 2, 3]"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register a new user",
+                "operationId": "2f25885f3b6f61ca11724ec302d2e439",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "johndoe@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "secretpassword"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success message"
+                    }
+                }
+            }
+        },
+        "/api/user/update-user": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register a new user",
+                "operationId": "c643ec0126a46f0f476b7c817625fea0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "phone_number": {
+                                        "type": "string",
+                                        "example": "123-456-7890"
+                                    },
+                                    "date_of_birth": {
+                                        "type": "string",
+                                        "example": "18/11/1999"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "408-j DHA Lahore"
+                                    },
+                                    "employment_status": {
+                                        "type": "string",
+                                        "example": "employed"
+                                    },
+                                    "years_of_working": {
+                                        "type": "string",
+                                        "example": "less than 6 months"
+                                    },
+                                    "retire": {
+                                        "type": "string",
+                                        "example": "more than 5 years"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success message"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "User login",
+                "operationId": "0fc9610184083ac6dddab2c63139225a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "johndoe@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "secretpassword"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success message"
+                    }
+                }
+            }
+        },
+        "/api/user/auth-user": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get Login User",
+                "operationId": "e037dbeb8cd38d0e0caa87a6a127496f",
+                "responses": {
+                    "200": {
+                        "description": "Success message"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/add-or-update-user-question": {
+            "post": {
+                "tags": [
+                    "User Question Answers"
+                ],
+                "summary": "Add user question answer in array",
+                "operationId": "a04ee2caefca674b9493ab8171a14139",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "question_id": {
+                                        "type": "integer",
+                                        "example": "2"
+                                    },
+                                    "answer": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "example": "Updated answer"
+                                        }
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "array"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success message"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/get-user-question": {
+            "get": {
+                "tags": [
+                    "User Question Answers"
+                ],
+                "summary": "Get User Question Answer",
+                "operationId": "5a9684df7858bdf1326d0d1d1620775c",
+                "responses": {
+                    "200": {
+                        "description": "Success message"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/get-user-question/{question_id}": {
+            "get": {
+                "tags": [
+                    "User Question Answers"
+                ],
+                "summary": "Get User Question Answer with question id",
+                "operationId": "a7bb086bf7736a99010fe4f161999728",
+                "parameters": [
+                    {
+                        "name": "question_id",
+                        "in": "path",
+                        "description": "Question Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer",
+                            "default": "1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Get Question"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/send-otp": {
+            "post": {
+                "tags": [
+                    "User Phone Number Verification"
+                ],
+                "summary": "Send otp message",
+                "operationId": "45743273efacc45628528ce8fdd9faad",
+                "responses": {
+                    "200": {
+                        "description": "Success message"
+                    }
+                }
+            }
+        },
+        "/api/user/verify-otp": {
+            "post": {
+                "tags": [
+                    "User Phone Number Verification"
+                ],
+                "summary": "Verify OTP for User",
+                "operationId": "411d0996ca73687b895774dd69c795f9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "otp"
+                                ],
+                                "properties": {
+                                    "otp": {
+                                        "type": "string",
+                                        "example": "12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully verified."
+                    }
+                }
+            }
+        },
+        "/api/user/reset-password": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Reset User's Password",
+                "operationId": "c7251c091e441ed7a389c0dacf269b9b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "old_password": {
+                                        "description": "1234abc",
+                                        "type": "password",
+                                        "format": "string"
+                                    },
+                                    "password": {
+                                        "description": "1234abc",
+                                        "type": "password",
+                                        "format": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "1234abc",
+                                        "type": "password",
+                                        "format": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/upload-user-avatar": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Update a user's avatar",
+                "operationId": "629ff719019438c76a57b7b351382bb1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "avatar": {
+                                        "description": "Image file to upload",
+                                        "type": "file",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/otp-forget-password": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Sending OTP for updating password",
+                "operationId": "0a8c2ce4d88c03f38e4988b301639cd1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "example": "johndoe@example.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/api/otp-verify": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Reset User's Password by verifying OTP",
+                "operationId": "a1b4ab282ddc702c9494c6cca35a250d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "otp": {
+                                        "type": "number",
+                                        "example": "123456"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "example": "johndoe@example.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        },
+        "/api/update-password": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Reset User's Password by verifying OTP",
+                "operationId": "a56b34abe142d87a1017912524eefa9f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "example": "johndoe@example.com"
+                                    },
+                                    "password": {
+                                        "description": "1234abc",
+                                        "type": "password",
+                                        "format": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "1234abc",
+                                        "type": "password",
+                                        "format": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "http",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization ",
+                "in": "header",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearer_token": {
+                "type": "http",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization ",
+                "in": "header",
+                "scheme": "bearer"
+            }
+        }
+    ]
+}
